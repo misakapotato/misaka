@@ -1,0 +1,103 @@
+<html>
+<head>
+    <title>神奇的皮卡丘</title>
+    <style type="text/css">
+    div.line0
+    {
+        width:1200px;
+        height:200px;
+        line-height:150%;
+        background-color:lightsteelblue;
+        margin: 0 auto;
+        text-align: center;
+    }
+     div.line1
+    {
+        width:1200px;
+        background-color: lightpink;
+        background-size:100% 100%;
+        height: 300px;
+        margin: 0 auto;
+    }
+    </style>
+    <script language="jscript" type="text/javascript">
+        //漂浮广告的初始位置
+         var x=0,y=0;        
+         //xin为真,则向右运动,否则向左运动.
+         //yin为真,则向右运动,否则向左运协.
+         var xin=true,yin=true;        
+         //移动的距离
+         var step=1;        
+         //移动的步长
+         var delay=5;        
+         function floatAD()
+         {
+             //L左边界,T右边界
+             var L=T=0;          
+             //层移动的右边界
+             var R=window.document.body.offsetWidth-window.document.getElementById("fly").offsetWidth;           
+             //层移动的下边界
+             var B=window.document.body.offsetHeight-window.document.getElementById("fly").offsetHeight;            
+             //层移动后的左边界
+             window.document.getElementById("fly").style.left=x;           
+             //层移动后的上边界
+             window.document.getElementById("fly").style.top=y;           
+             //判断水平方向
+             x=x+step*(xin?1:-1);          
+             //到达边界后的处理
+             if(x<L){xin=true;x=L;}
+             if(x>R){xin=false;x=R}           
+             //判断生直方向
+             y=y+step*(yin?1:-1);           
+             //到达边界后的处理
+             if(y<T){yin=true;y=T;}
+             if(y>B){yin=false;y=B;}
+             //隔多少时间调用一次
+             setTimeout("floatAD()",delay);
+         }
+    </script>
+</head>
+<body onload="floatAD()">
+    <div id="fly" style="position:absolute;   left:0px;    top:0px; width:90px; height:105px; z-index:1;">
+        <img src="pic/web01.jpg" width="120" height="120"/>
+    </div>
+    <div class="line0">
+        <img id="pic0" src="pic/web10.gif" style="width: 120px;margin:5px 100px;"></img>
+        <p style="text-align:center;font-size:20px;font-family:微软雅黑 light,微软雅黑,'Courier New', Courier, monospace;margin: 10px auto;font-weight: bold;color:whitesmoke">
+            点击皮卡丘可以切换顺序<br><span style="font-size: 10px;">不信你试试啊</span>
+          </p>
+      </div>
+    <div class="line1">
+        <div style="width: 33%;float: left;height:300px;text-align: center;"><img id="pic1" src="pic/web11.gif" style="height:240px;"></img>
+            <p style="text-align:center;font-size:20px;font-family:微软雅黑 light,微软雅黑,'Courier New', Courier, monospace;margin: 10px auto;font-weight: bold;color:whitesmoke">这里原来是丹生谷森夏<br><span style="font-size: 10px;">にぶたに しんか</span>
+            </p>
+        </div>
+        <div style="width: 34%;float: left;height:300px;text-align: center;"><img id="pic2" src="pic/web12.gif" style="height:240px;"></img>
+            <p style="text-align:center;font-size:20px;font-family:微软雅黑 light,微软雅黑,'Courier New', Courier, monospace;margin: 10px auto;font-weight: bold;color:whitesmoke">这里原来是凸守早苗<br><span style="font-size: 10px;">でこもり　さなえ</span>
+            </p>
+        </div>
+        <div style="width: 33%;float: left;height:300px;text-align: center;"><img id="pic3" src="pic/web13.gif" style="height:240px;"></img>
+            <p style="text-align:center;font-size:20px;font-family:微软雅黑 light,微软雅黑,'Courier New', Courier, monospace;margin: 10px auto;font-weight: bold;color:whitesmoke">这里原来是小鸟游六花<br><span style="font-size: 10px;">たかなし りっか</span>
+            </p>
+        </div>
+      </div>
+    <script>
+    imgid = document.getElementById("pic0");
+    imgid1 = document.getElementById("pic1");
+    imgid2 = document.getElementById("pic2");
+    imgid3 = document.getElementById("pic3");
+    i=0;
+    imgid.onclick=function(){
+        if(i==0){
+            imgid1.src="pic/web12.gif";imgid2.src="pic/web13.gif";imgid3.src="pic/web11.gif";i=1; 
+        }
+        else if(i==1){
+            imgid1.src="pic/web13.gif";imgid2.src="pic/web11.gif";imgid3.src="pic/web12.gif";i=2; 
+        }
+        else{
+            imgid1.src="pic/web11.gif";imgid2.src="pic/web12.gif";imgid3.src="pic/web13.gif";i=0; 
+        }
+    }
+    </script>
+</body>
+</html>
